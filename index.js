@@ -6,14 +6,15 @@ const crypto                  = require('crypto');
 const _                       = require('underscore');
 
 var Storage                   = klass(function(options) {
-
+  
   _.extend(this, options.mock);
+  this.data = {};
 
 }).methods({
 
   stream: function(data, key, next) {
-    this.data = data;
-    this.key = key;
+    this.data[key] = data;
+    
     if (next) {
       next();
     }
@@ -34,35 +35,41 @@ var Storage                   = klass(function(options) {
   },
 
   put: function(key, body, next) {
-    this.key  = key;
-    this.body = body;
+    this.data[key] = body;
     if (next) {
       next(err, {});
     }
   },
 
   get: function(key, next) {
-    this.key = key;
     if (next) {
-      next(null, {});
+      next(null, this.data[key]);
     }
   },
 
   delete: function(key, next) {
-    this.key = key;
+    delete this.data[key];
     if (next) {
       next(null, key);
     }
   },
 
   move: function(oldkey, key, next) {
-    this.oldkey = oldkey;
-    this.key = key;
+    this.data[key] = this.data[oldkey];
+    delete this.data[oldkey]
+
     if (next) {
       next(null);
     }
   }
+  
+  clear: function() {
+    this.data = {};
+  }
+
 })
+
+
 
 module.exports          = Storage;
 
