@@ -1,0 +1,19 @@
+{
+  "name": "node-paperclip-mock-file-system",
+  "version": "1.0.0",
+  "description": "node-paperclip-mock-file-system =========",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ballantyne/node-paperclip-mock-file-system.git"
+  },
+  "author": "Scott Ballantyne",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ballantyne/node-paperclip-mock-file-system/issues"
+  },
+  "homepage": "https://github.com/ballantyne/node-paperclip-mock-file-system#readme"
+}
