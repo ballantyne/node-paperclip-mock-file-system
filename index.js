@@ -61,7 +61,7 @@ var Storage                   = klass(function(options) {
     if (next) {
       next(null);
     }
-  }
+  },
   
   clear: function() {
     global.mock_file_system = {};
