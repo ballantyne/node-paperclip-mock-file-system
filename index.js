@@ -36,6 +36,9 @@ var Storage                   = klass(function(options) {
 
   put: function(key, body, next) {
     global.mock_file_system[key] = body;
+
+    console.log(global.mock_file_system);
+    
     if (next) {
       next(err, {});
     }
