@@ -40,7 +40,7 @@ var Storage                   = klass(function(options) {
     console.log(global.mock_file_system);
     
     if (next) {
-      next(err, {});
+      next(null, {});
     }
   },
 
