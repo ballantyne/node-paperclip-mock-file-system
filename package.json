@@ -1,7 +1,7 @@
 {
   "name": "node-paperclip-mock-file-system",
-  "version": "1.0.1",
-  "description": "node-paperclip-mock-file-system =========",
+  "version": "1.0.2",
+  "description": "node-paperclip-mock-file-system",
   "main": "index.js",
   "scripts": {
     "test": "mocha"

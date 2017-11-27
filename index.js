@@ -8,12 +8,12 @@ const _                       = require('underscore');
 var Storage                   = klass(function(options) {
   
   _.extend(this, options.mock);
-  this.data = {};
+  global.mock_file_system = {};
 
 }).methods({
 
   stream: function(data, key, next) {
-    this.data[key] = data;
+    global.mock_file_system[key] = data;
     
     if (next) {
       next();
@@ -35,7 +35,7 @@ var Storage                   = klass(function(options) {
   },
 
   put: function(key, body, next) {
-    this.data[key] = body;
+    global.mock_file_system[key] = body;
     if (next) {
       next(err, {});
     }
@@ -43,20 +43,20 @@ var Storage                   = klass(function(options) {
 
   get: function(key, next) {
     if (next) {
-      next(null, this.data[key]);
+      next(null, global.mock_file_system[key]);
     }
   },
 
   delete: function(key, next) {
-    delete this.data[key];
+    delete global.mock_file_system[key];
     if (next) {
       next(null, key);
     }
   },
 
   move: function(oldkey, key, next) {
-    this.data[key] = this.data[oldkey];
-    delete this.data[oldkey]
+    global.mock_file_system[key] = global.mock_file_system[oldkey];
+    delete global.mock_file_system[oldkey]
 
     if (next) {
       next(null);
@@ -64,7 +64,7 @@ var Storage                   = klass(function(options) {
   }
   
   clear: function() {
-    this.data = {};
+    global.mock_file_system = {};
   }
 
 })
