@@ -12,6 +12,10 @@ var Storage                   = klass(function(options) {
 
 }).methods({
 
+  host: function() {
+    return "";
+  },
+
   stream: function(data, key, next) {
     global.mock_file_system[key] = data;
     
